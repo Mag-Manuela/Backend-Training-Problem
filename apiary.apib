@@ -1,80 +1,107 @@
 FORMAT: 1A
 HOST: https://polls.apiblueprint.org/
 
-# insurance
+# Insurance Company API
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+This is a simple API designed for an Insurance Company Application. The application
+can have two types of users: customer and broker. A broker can manage
+the list of accidents of each customer.
+## Accident Operations Collection [/accidents]
 
-## Questions Collection [/questions]
-
-### List All Questions [GET]
+### List All Accidents [GET]
 
 + Response 200 (application/json)
 
         [
             {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
+                "accidents": [
                     {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
-                    }
+                      "id":"1",
+                      "location": "Wall Street 31",
+                      "number_victims": 32,
+                      "date": "2000-09-09"
+                    },
+                    {
+                      "id":"2",
+                      "location": "Wall Street 32",
+                      "number_victims": 2,
+                      "date": "2002-08-07"
+                    },
+                    {
+                      "id":"3",
+                      "location": "Wall Street 33",
+                      "number_victims": 3,
+                      "date": "2009-01-01"
+                    },
+                    {
+                      "id":"4",
+                      "location": "Wall Street 34",
+                      "number_victims": 0,
+                      "date": "2021-09-08"
+                    },
+                    {
+                      "id":"5",
+                      "location": "Wall Street 35",
+                      "number_victims": 0,
+                      "date": "2021-10-01"
+                    },
                 ]
             }
         ]
 
-### Create a New Question [POST]
+### Create a New Accident [POST]
 
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
 
 + Request (application/json)
 
         {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
+            "location": "Str. 1 Decembrie",
+            "number_victims": 2,
+            "date": "2022-09-08"
         }
 
 + Response 201 (application/json)
 
     + Headers
 
-            Location: /questions/2
+            Location: /accidents/add
 
     + Body
 
             {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
+                {
+                      "id":"6",
+                      "location": "Wall Street 32",
+                      "number_victims": 2,
+                      "date": "2002-08-07"
+                }
             }
+            
+### Delete an Accident [DELETE]
+
++ Request (application/json)
+
+
++ Response 204 (application/json)
+
+    + Headers
+        
+            Location: /accidents/delete/1
+        
+    
+### Update an Accident [PUT]
+
++ Request (application/json)
+
+        {[
+            { 
+                "location": "new updated location",
+                "number_victims": 12,
+                "date": "2021-09-08" 
+            }
+        ]}
+        
++ Response 200
+    + Headers
+        
+            Location: /accidents/update/1

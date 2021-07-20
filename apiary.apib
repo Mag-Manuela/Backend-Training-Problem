@@ -6,48 +6,52 @@ HOST: https://polls.apiblueprint.org/
 This is a simple API designed for an Insurance Company Application. The application
 can have two types of users: customer and broker. A broker can manage
 the list of accidents of each customer.
-## Accident Operations Collection [/accidents]
+
 
 ### List All Accidents [GET]
 
 + Response 200 (application/json)
+    + Headers
+        
+            Location: /accidents/list
+    + Body
 
-        [
-            {
-                "accidents": [
-                    {
-                      "id":"1",
-                      "location": "Wall Street 31",
-                      "number_victims": 32,
-                      "date": "2000-09-09"
-                    },
-                    {
-                      "id":"2",
-                      "location": "Wall Street 32",
-                      "number_victims": 2,
-                      "date": "2002-08-07"
-                    },
-                    {
-                      "id":"3",
-                      "location": "Wall Street 33",
-                      "number_victims": 3,
-                      "date": "2009-01-01"
-                    },
-                    {
-                      "id":"4",
-                      "location": "Wall Street 34",
-                      "number_victims": 0,
-                      "date": "2021-09-08"
-                    },
-                    {
-                      "id":"5",
-                      "location": "Wall Street 35",
-                      "number_victims": 0,
-                      "date": "2021-10-01"
-                    },
-                ]
-            }
-        ]
+            [
+                {
+                    "accidents": [
+                        {
+                          "id":"1",
+                          "location": "Wall Street 31",
+                          "number_victims": 32,
+                          "date": "2000-09-09"
+                        },
+                        {
+                          "id":"2",
+                          "location": "Wall Street 32",
+                          "number_victims": 2,
+                          "date": "2002-08-07"
+                        },
+                        {
+                          "id":"3",
+                          "location": "Wall Street 33",
+                          "number_victims": 3,
+                          "date": "2009-01-01"
+                        },
+                        {
+                          "id":"4",
+                          "location": "Wall Street 34",
+                          "number_victims": 0,
+                          "date": "2021-09-08"
+                        },
+                        {
+                          "id":"5",
+                          "location": "Wall Street 35",
+                          "number_victims": 0,
+                          "date": "2021-10-01"
+                        },
+                    ]
+                }
+            ]
 
 ### Create a New Accident [POST]
 
@@ -64,7 +68,7 @@ the list of accidents of each customer.
 
     + Headers
 
-            Location: /accidents/add
+            Location: /broker/add
 
     + Body
 
@@ -86,7 +90,7 @@ the list of accidents of each customer.
 
     + Headers
         
-            Location: /accidents/delete/1
+            Location: /broker/delete/1
         
     
 ### Update an Accident [PUT]
@@ -104,4 +108,126 @@ the list of accidents of each customer.
 + Response 200
     + Headers
         
-            Location: /accidents/update/1
+            Location: /broker/update/1
+            
+            
+### Show Accidents with no victims [GET]
+
++ Response 200 (application/json)
+    + Headers
+        
+            Location: /customer/no-victims
+    + Body
+    
+            [
+                {
+                    "accidents": [
+                        {
+                          "id":"4",
+                          "location": "Wall Street 34",
+                          "number_victims": 0,
+                          "date": "2021-09-08"
+                        },
+                        {
+                          "id":"5",
+                          "location": "Wall Street 35",
+                          "number_victims": 0,
+                          "date": "2021-10-01"
+                        },
+                    ]
+                }
+            ]
+            
+### Show Information about broker [GET]
+
++ Response 200 (application/json)
+    + Headers
+        
+            Location: /customer/broker-info
+    + Body
+    
+            [
+                {
+                    "broker": [
+                        {
+                          "id":"4",
+                          "cnp": "23423423424232",
+                          "first_name": "Angel",
+                          "last_name": "Castillo"
+                        }
+                    ]
+                }
+            ]
+
+
+### Filter accidents by number of victims [Get]
+
++ Response 200 (application/json)
+    + Headers
+        
+            Location: /broker/filter/0
+    + Body
+    
+            [
+                {
+                    "accidents": [
+                        {
+                          "id":"4",
+                          "location": "Wall Street 34",
+                          "number_victims": 0,
+                          "date": "2021-09-08"
+                        },
+                        {
+                          "id":"5",
+                          "location": "Wall Street 35",
+                          "number_victims": 0,
+                          "date": "2021-10-01"
+                        },
+                    ]
+                }
+            ]
+            
+### Sort by date [GET]
+
++ Response 200 (application/json)
+    + Headers
+        
+            Location: /broker/sort
+    + Body
+    
+            [
+                {
+                    "accidents": [
+                        {
+                          "id":"1",
+                          "location": "Wall Street 31",
+                          "number_victims": 32,
+                          "date": "2000-09-09"
+                        },
+                        {
+                          "id":"2",
+                          "location": "Wall Street 32",
+                          "number_victims": 2,
+                          "date": "2002-08-07"
+                        },
+                        {
+                          "id":"3",
+                          "location": "Wall Street 33",
+                          "number_victims": 3,
+                          "date": "2009-01-01"
+                        },
+                        {
+                          "id":"4",
+                          "location": "Wall Street 34",
+                          "number_victims": 0,
+                          "date": "2021-09-08"
+                        },
+                        {
+                          "id":"5",
+                          "location": "Wall Street 35",
+                          "number_victims": 0,
+                          "date": "2021-10-01"
+                        },
+                    ]
+                }
+            ]

@@ -1,4 +1,8 @@
 package com.example.insurance_company.repositories;
 
-public interface IUserRepository {
+import com.example.insurance_company.models.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface IUserRepository extends JpaRepository<User, Long> {
+
 }

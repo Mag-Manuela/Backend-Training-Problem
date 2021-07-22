@@ -10,4 +10,7 @@ public interface IAccidentService {
     void deleteAccident(Long id);
     void updateAccident(Accident accident);
     void addAccident(Accident accident);
+    List<Accident> findAccidentsWithZeroVictims();
+    List<Accident> filterByVictimsNumber(int number);
+    List<Accident> sortByDate();
 }

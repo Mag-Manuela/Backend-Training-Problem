@@ -1,11 +1,13 @@
 package com.example.insurance_company.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.sql.Date;
 
+@Data
 @Entity
 @Table(name = "accident")
 public class Accident {
@@ -22,6 +24,7 @@ public class Accident {
     private int numberOfVictims;
 
     @Column(name = "date")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-mm-dd")
     private Date date;
 
     @JsonBackReference
@@ -47,45 +50,5 @@ public class Accident {
                 ", numberOfVictims=" + numberOfVictims +
                 ", date=" + date +
                 '}';
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public int getNumberOfVictims() {
-        return numberOfVictims;
-    }
-
-    public void setNumberOfVictims(int numberOfVictims) {
-        this.numberOfVictims = numberOfVictims;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 }

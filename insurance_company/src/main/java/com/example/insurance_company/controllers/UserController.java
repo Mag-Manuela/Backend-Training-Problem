@@ -8,6 +8,7 @@ import com.example.insurance_company.models.dto.AccidentsDto;
 import com.example.insurance_company.services.IAccidentService;
 import com.example.insurance_company.services.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.method.P;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -49,6 +50,22 @@ public class UserController {
         accidentService.deleteAccident(id);
         return "Accident deleted successfully!";
     }
+
+    @GetMapping("accidents/customer/no-victims")
+    public List<Accident> getAccidentsWithZeroVictims(){
+        return accidentService.findAccidentsWithZeroVictims();
+    }
+
+    @GetMapping("accidents/broker/filter/{number}")
+    public List<Accident> getAccidentsWithNumberOfVictims(@PathVariable int number){
+        return accidentService.filterByVictimsNumber(number);
+    }
+
+    @GetMapping("accidents/broker/sort")
+    public List<Accident> getAccidentsSortedByDate(){
+        return accidentService.sortByDate();
+    }
+
 
 
 }

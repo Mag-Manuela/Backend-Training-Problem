@@ -19,4 +19,26 @@ public class AccidentService implements IAccidentService{
     public List<Accident> findAll() {
         return accidentRepository.findAll();
     }
+
+    @Override
+    public Accident getAccidentById(Long id) {
+        return accidentRepository.findById(id).get();
+    }
+
+    @Override
+    public void deleteAccident(Long id) {
+        accidentRepository.delete(this.getAccidentById(id));
+    }
+
+    @Override
+    public void updateAccident(Accident accident) {
+
+    }
+
+    @Override
+    public void addAccident(Accident accident) {
+        System.out.println("=>>>>>>>" + accident.getUser().getEmail());
+        accidentRepository.save(accident);
+    }
+
 }

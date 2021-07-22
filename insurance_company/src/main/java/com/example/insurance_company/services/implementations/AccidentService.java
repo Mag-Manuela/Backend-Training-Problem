@@ -37,6 +37,8 @@ public class AccidentService implements IAccidentService{
 
     @Override
     public void addAccident(Accident accident) {
+        System.out.println("=>>>>>>>" + accident.getUser().getEmail());
         accidentRepository.save(accident);
     }
+
 }

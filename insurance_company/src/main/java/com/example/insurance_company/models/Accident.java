@@ -1,5 +1,7 @@
 package com.example.insurance_company.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -22,9 +24,11 @@ public class Accident {
     private int numberOfVictims;
 
     @Column(name = "date")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-mm-dd")
     private Date date;
 
-    @ManyToOne(cascade= CascadeType.ALL)
+    @JsonBackReference
+    @ManyToOne(cascade= CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name="user_id")
     private User user;
 
@@ -38,5 +42,13 @@ public class Accident {
         this.user = user;
     }
 
-
+    @Override
+    public String toString() {
+        return "Accident{" +
+                "id=" + id +
+                ", location='" + location + '\'' +
+                ", numberOfVictims=" + numberOfVictims +
+                ", date=" + date +
+                '}';
+    }
 }

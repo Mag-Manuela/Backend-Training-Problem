@@ -1,23 +1,23 @@
-package com.example.insurance_company.config;
-
-import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
-
-//public class MySpringMvcDispatcherServletInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+//package com.example.insurance_company.config;
 //
-//    @Override
-//    protected Class<?>[] getRootConfigClasses() {
-//        // TODO Auto-generated method stub
-//        return null;
-//    }
+//import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 //
-//    @Override
-//    protected Class<?>[] getServletConfigClasses() {
-//        return new Class[] { JpaConfig.class };
-//    }
-//
-//    @Override
-//    protected String[] getServletMappings() {
-//        return new String[] { "/" };
-//    }
-//
-//}
+////public class MySpringMvcDispatcherServletInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+////
+////    @Override
+////    protected Class<?>[] getRootConfigClasses() {
+////        // TODO Auto-generated method stub
+////        return null;
+////    }
+////
+////    @Override
+////    protected Class<?>[] getServletConfigClasses() {
+////        return new Class[] { JpaConfig.class };
+////    }
+////
+////    @Override
+////    protected String[] getServletMappings() {
+////        return new String[] { "/" };
+////    }
+////
+////}

@@ -21,6 +21,7 @@ public class UserController {
 
     @GetMapping(value = "/accidents/list")
     List<Accident> getAllAccidents(){
+        System.out.println(accidentService.getCurrentUser());
         return accidentService.findAll();
     }
 

@@ -1,6 +1,7 @@
 package com.example.insurance_company.services.implementations;
 
 import com.example.insurance_company.models.Accident;
+import com.example.insurance_company.models.User;
 import com.example.insurance_company.repositories.IAccidentRepository;
 import com.example.insurance_company.repositories.IAccidentRepositoryCustom;
 import com.example.insurance_company.services.IAccidentService;
@@ -58,6 +59,11 @@ public class AccidentService implements IAccidentService{
     @Override
     public List<Accident> sortByDate() {
         return accidentRepositoryCustom.sortByDate();
+    }
+
+    @Override
+    public User getCurrentUser() {
+        return null;
     }
 
 }
